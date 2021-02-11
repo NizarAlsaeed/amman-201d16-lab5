@@ -53,9 +53,11 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 function sumAndMultiply(a, b, c) {
   //eslint-disable-line
-  let sum = a+b+c;
-  let product = a*b*c;
-  return [sum,product,a+' and '+b+' and '+c+' sum to '+sum+'.','The product of ' +a+' and '+b+' and '+c+' is '+product+'.']
+  let sumMemory =sum(a,b)[0];
+  sumMemory=sum(sumMemory,c)[0];
+  let product = multiply(a,b)[0];
+  product=multiply(product,c)[0];
+  return [sumMemory,product,a+' and '+b+' and '+c+' sum to '+sumMemory+'.','The product of ' +a+' and '+b+' and '+c+' is '+product+'.'];
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
@@ -75,15 +77,17 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 let testArray = [2, 3, 4]; //eslint-disable-line
-
 function sumArray(sumArr) {
   //eslint-disable-line
-
+  let sumMemory=0;
+  for (let i=0;i<sumArr.length;i++){
+    sumMemory =sum( sumMemory,sumArr[i])[0] ;
+  } 
+  return([sumMemory,sumArr[0]+','+sumArr[1]+','+sumArr[2]+' was passed in as an array of numbers, and '+ sumMemory+' is their sum.']);
 }
-
 // Here is the test for sumArray(); uncomment it to run it
 
-// testSumArray(testArray);
+ testSumArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
